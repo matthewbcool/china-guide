@@ -1,43 +1,24 @@
 import React from 'react';
-import { StyleSheet, Image, Text, View } from 'react-native';
+import { Alert, StyleSheet, Image, Text, View } from 'react-native';
 import { WebBrowser } from 'expo';
 import Touchable from 'react-native-platform-touchable';
-import PvgRestaurantList from './components/PvgRestaurantList.js';
 
-export default class PvgHomeView extends React.Component {
-    constructor(){
-    super();
-    this.state ={
-      status:true
-    }
+export default class PekRestaurantList extends React.Component {
+  _onPressTouch() {
+  	Alert.alert('Link to menu screen!')
   }
 
-  ShowHideTextComponentView = () =>{
-    if(this.state.status == true)
-      {
-        this.setState({status: false})
-      }
-    else
-      {
-        this.setState({status: true})
-      }
-  }
-  
   render() {
-    return (
-      <View>
-        <Text style={styles.optionsTitleText}>
-          PVG
-        </Text>
-
-        <Touchable
+    return ( 
+    	<View>
+         <Touchable
           style={styles.option}
           background={Touchable.Ripple('#ccc', false)}
-          onPress={this.ShowHideTextComponentView}>
+          onPress={this._onPressTouch}>
           <View style={{ flexDirection: 'row' }}>
             <View style={styles.optionIconContainer}>
               <Image
-             source={require('./images/food.png')}
+             source={require('../images/food.png')}
              fadeDuration={0}
              style={{ width: 48, height: 48 }}
              />
@@ -46,28 +27,25 @@ export default class PvgHomeView extends React.Component {
               <Text style={styles.optionText}>
                 Restaurants
               </Text>
-              { 
-        this.state.status ? <PvgRestaurantList /> : null
-              }
             </View>
           </View>
         </Touchable>
 
         <Touchable
+          style={styles.option}
           background={Touchable.Ripple('#ccc', false)}
-          style={[styles.option, ]}
-          onPress={this._handlePressSlack}>
+          onPress={this._onPressTouch}>
           <View style={{ flexDirection: 'row' }}>
             <View style={styles.optionIconContainer}>
-             <Image
-             source={require('./images/shopping.png')}
+              <Image
+             source={require('../images/food.png')}
              fadeDuration={0}
              style={{ width: 48, height: 48 }}
              />
             </View>
             <View style={styles.optionTextContainer}>
               <Text style={styles.optionText}>
-                Shopping
+                Restaurants
               </Text>
             </View>
           </View>
@@ -76,37 +54,27 @@ export default class PvgHomeView extends React.Component {
         <Touchable
           style={styles.option}
           background={Touchable.Ripple('#ccc', false)}
-          onPress={this._handlePressForums}>
+          onPress={this._onPressTouch}>
           <View style={{ flexDirection: 'row' }}>
             <View style={styles.optionIconContainer}>
               <Image
-              source={require('./images/service.png')}
-              fadeDuration={0}
-              style={{ width: 48, height: 48 }}
-               />
+             source={require('../images/food.png')}
+             fadeDuration={0}
+             style={{ width: 48, height: 48 }}
+             />
             </View>
             <View style={styles.optionTextContainer}>
               <Text style={styles.optionText}>
-                Services
+                Restaurants
               </Text>
             </View>
           </View>
         </Touchable>
-      </View>
-    );
-  }
+        </View>
 
-  _handlePressSlack = () => { this.setState({myButtonOpacity: 0.5})
-  };
-
-  _handlePressDocs = () => {
-    WebBrowser.openBrowserAsync('http://docs.expo.io');
-  };
-
-  _handlePressForums = () => {
-    WebBrowser.openBrowserAsync('http://forums.expo.io');
-  };
-}
+       );
+    }
+}    
 
 const styles = StyleSheet.create({
   container: {

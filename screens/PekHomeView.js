@@ -2,8 +2,27 @@ import React from 'react';
 import { StyleSheet, Image, Text, View } from 'react-native';
 import { WebBrowser } from 'expo';
 import Touchable from 'react-native-platform-touchable';
+import PekRestaurantList from './components/PekRestaurantList.js';
 
 export default class PekHomeView extends React.Component {
+  constructor(){
+    super();
+    this.state ={
+      status:true
+    }
+  }
+
+  ShowHideTextComponentView = () =>{
+    if(this.state.status == true)
+      {
+        this.setState({status: false})
+      }
+    else
+      {
+        this.setState({status: true})
+      }
+  }
+  
   render() {
     return (
       <View>
@@ -14,7 +33,7 @@ export default class PekHomeView extends React.Component {
         <Touchable
           style={styles.option}
           background={Touchable.Ripple('#ccc', false)}
-          onPress={this._handlePressDocs}>
+          onPress={this.ShowHideTextComponentView}>
           <View style={{ flexDirection: 'row' }}>
             <View style={styles.optionIconContainer}>
               <Image
@@ -25,8 +44,11 @@ export default class PekHomeView extends React.Component {
             </View>
             <View style={styles.optionTextContainer}>
               <Text style={styles.optionText}>
-                Resaurants
+                Restaurants
               </Text>
+              {
+                this.state.status ? <PekRestaurantList /> : null
+              }
             </View>
           </View>
         </Touchable>
@@ -84,7 +106,7 @@ const styles = StyleSheet.create({
     paddingTop: 15,
   },
   optionsTitleText: {
-    fontSize: 16,
+    fontSize: 20,
     marginLeft: 15,
     marginTop: 9,
     marginBottom: 12,
