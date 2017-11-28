@@ -1,16 +1,41 @@
 import React from 'react';
 import { Alert, StyleSheet, Image, Text, View } from 'react-native';
-import { WebBrowser } from 'expo';
 import Touchable from 'react-native-platform-touchable';
 
+
+
 export default class PekRestaurantList extends React.Component {
-  _onPressTouch() {
-  	Alert.alert('Link to menu screen!')
+  static navigationOptions = {
+    title: 'PekRestaurantList',
   }
 
+
   render() {
+
     return ( 
     	<View>
+        <Touchable
+          style={styles.option}
+          background={Touchable.Ripple('#ccc', false)}
+          //onPress
+ 
+          >
+          <View style={{ flexDirection: 'row' }}>
+            <View style={styles.optionIconContainer}>
+              <Image
+             source={require('../images/food.png')}
+             fadeDuration={0}
+             style={{ width: 48, height: 48 }}
+             />
+            </View>
+            <View style={styles.optionTextContainer}>
+              <Text style={styles.optionText}>
+                A Beijing Restaurant
+              </Text>
+            </View>
+          </View>
+        </Touchable>
+
          <Touchable
           style={styles.option}
           background={Touchable.Ripple('#ccc', false)}
@@ -25,56 +50,21 @@ export default class PekRestaurantList extends React.Component {
             </View>
             <View style={styles.optionTextContainer}>
               <Text style={styles.optionText}>
-                Restaurants
+                A Beijing Restaurant
               </Text>
             </View>
           </View>
         </Touchable>
 
-        <Touchable
-          style={styles.option}
-          background={Touchable.Ripple('#ccc', false)}
-          onPress={this._onPressTouch}>
-          <View style={{ flexDirection: 'row' }}>
-            <View style={styles.optionIconContainer}>
-              <Image
-             source={require('../images/food.png')}
-             fadeDuration={0}
-             style={{ width: 48, height: 48 }}
-             />
-            </View>
-            <View style={styles.optionTextContainer}>
-              <Text style={styles.optionText}>
-                Restaurants
-              </Text>
-            </View>
-          </View>
-        </Touchable>
 
-        <Touchable
-          style={styles.option}
-          background={Touchable.Ripple('#ccc', false)}
-          onPress={this._onPressTouch}>
-          <View style={{ flexDirection: 'row' }}>
-            <View style={styles.optionIconContainer}>
-              <Image
-             source={require('../images/food.png')}
-             fadeDuration={0}
-             style={{ width: 48, height: 48 }}
-             />
-            </View>
-            <View style={styles.optionTextContainer}>
-              <Text style={styles.optionText}>
-                Restaurants
-              </Text>
-            </View>
-          </View>
-        </Touchable>
         </View>
 
        );
     }
 }    
+
+
+
 
 const styles = StyleSheet.create({
   container: {
@@ -93,6 +83,7 @@ const styles = StyleSheet.create({
   },
   optionIconContainer: {
     marginRight: 9,
+    marginTop: 20
   },
   option: {
     backgroundColor: '#fdfdfd',
@@ -103,6 +94,6 @@ const styles = StyleSheet.create({
   },
   optionText: {
     fontSize: 15,
-    marginTop: 10,
+    marginTop: 40,
   },
 });

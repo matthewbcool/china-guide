@@ -25,7 +25,7 @@ export default class PvgRestaurantList extends React.Component {
             </View>
             <View style={styles.optionTextContainer}>
               <Text style={styles.optionText}>
-                Restaurants
+                Some Place that is good
               </Text>
             </View>
           </View>
@@ -45,7 +45,7 @@ export default class PvgRestaurantList extends React.Component {
             </View>
             <View style={styles.optionTextContainer}>
               <Text style={styles.optionText}>
-                Restaurants
+                An ok place
               </Text>
             </View>
           </View>
@@ -65,7 +65,7 @@ export default class PvgRestaurantList extends React.Component {
             </View>
             <View style={styles.optionTextContainer}>
               <Text style={styles.optionText}>
-                Restaurants
+                the other place
               </Text>
             </View>
           </View>
@@ -93,6 +93,7 @@ const styles = StyleSheet.create({
   },
   optionIconContainer: {
     marginRight: 9,
+    marginTop: 20
   },
   option: {
     backgroundColor: '#fdfdfd',
@@ -103,6 +104,6 @@ const styles = StyleSheet.create({
   },
   optionText: {
     fontSize: 15,
-    marginTop: 10,
+    marginTop: 40,
   },
 });

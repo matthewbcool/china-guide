@@ -1,10 +1,17 @@
 import React from 'react';
 import { StyleSheet, Image, Text, View } from 'react-native';
-import { WebBrowser } from 'expo';
 import Touchable from 'react-native-platform-touchable';
 import PekRestaurantList from './components/PekRestaurantList.js';
 
+import { StackNavigator } from 'react-navigation';
+
+import MenuScreen  from './MenuScreen.js';
+
+
+
+
 export default class PekHomeView extends React.Component {
+
   constructor(){
     super();
     this.state ={
@@ -46,59 +53,20 @@ export default class PekHomeView extends React.Component {
               <Text style={styles.optionText}>
                 Restaurants
               </Text>
-              {
-                this.state.status ? <PekRestaurantList /> : null
-              }
+              { this.state.status ? <PekRestaurantList /> : null }
             </View>
           </View>
         </Touchable>
 
-        <Touchable
-          background={Touchable.Ripple('#ccc', false)}
-          style={styles.option}
-          onPress={this._handlePressSlack}>
-          <View style={{ flexDirection: 'row' }}>
-            <View style={styles.optionIconContainer}>
-             <Image
-             source={require('./images/shopping.png')}
-             fadeDuration={0}
-             style={{ width: 48, height: 48 }}
-             />
-            </View>
-            <View style={styles.optionTextContainer}>
-              <Text style={styles.optionText}>
-                Shopping
-              </Text>
-            </View>
-          </View>
-        </Touchable>
-
-        <Touchable
-          style={styles.option}
-          background={Touchable.Ripple('#ccc', false)}
-          onPress={this._handlePressForums}>
-          <View style={{ flexDirection: 'row' }}>
-            <View style={styles.optionIconContainer}>
-              <Image
-              source={require('./images/service.png')}
-              fadeDuration={0}
-              style={{ width: 48, height: 48 }}
-               />
-            </View>
-            <View style={styles.optionTextContainer}>
-              <Text style={styles.optionText}>
-                Services
-              </Text>
-            </View>
-          </View>
-        </Touchable>
       </View>
     );
   }
-
-
-
 }
+
+const AppNavigator = StackNavigator({
+  MenuScreen: { screen: MenuScreen}
+})
+
 
 const styles = StyleSheet.create({
   container: {
